@@ -7,11 +7,9 @@ Router.use('/add-product',(req,res,next)=>{
     console.log("Add product wala");
 
     res.send(` <html>
-    <body>
-    
-    
-    
-    <form action='/product' method='POST'>
+    <body> 
+        
+    <form onsubmit="localStorage.setItem('username',document.getElementById('username').value)" action='/chats/product' method='POST'>
      
       <input type="text" id="name" name="name" ><br>
       <input type="text" id="size" name="size" ><br>
@@ -25,6 +23,6 @@ Router.use('/product',(req,res,next)=>{
     console.log("inside /product");
     console.log(req.body);
 
-    res.redirect('/')
+    res.redirect('/chats')
 })
 module.exports=Router;

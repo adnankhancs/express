@@ -1,25 +1,18 @@
-const http=require('http');
-const express=require("express");
-const shoproutes=require("./routes/shop");
-const adminroutes=require("./routes/admin");
-
-
-const bodyparser=require("body-parser");
-
-const app=express()
-
-app.use(bodyparser.urlencoded())
-
-app.use('/admin',adminroutes);
-app.use('/shop',shoproutes);
-app.use((req,res,next)=>{
-    res.status(404).send(`<h1>page not found......404<!h2>`)
-})
-
-
-
-const server=http.createServer(app);
-            
-
-
-server.listen(3000);
+const express = require('express'); 
+const bodyParser = require('body-parser'); 
+  
+ const app = express(); 
+  
+ const loginRoutes = require('./routes/login'); 
+ const chatsRoutes = require('./routes/chats'); 
+  
+ app.use(bodyParser.urlencoded({extended: false})); 
+  
+ app.use('/', loginRoutes); 
+ app.use('/', chatsRoutes); 
+  
+//  app.use((req, res, next)=>{ 
+//      res.status(404).send('<h1>Page not Found</h1>'); 
+//  }) 
+  
+ app.listen(3000);  
